@@ -4,13 +4,13 @@ exports.up = function (knex) {
     table.text("content");
     table.integer("score");
     table.timestamps(true, true);
-    table.integer("critic_id").unSigned().notNullable();
+    table.integer("critic_id").unsigned().notNullable();
     table
       .foreign("critic_id")
       .references("critic_id")
       .inTable("critics")
       .onDelete("cascade");
-    table.integer("movie_id").unSigned().notNullable();
+    table.integer("movie_id").unsigned().notNullable();
     table
       .foreign("movie_id")
       .references("movie_id")

@@ -3,8 +3,8 @@ exports.up = function (knex) {
     table.increments("movie_id").primary();
     table.string("title");
     table.integer("runtime_in_minutes");
-    table.string("rating");
-    table.text("decription");
+    table.enum("rating", ["G", "PG", "PG-13", "R", "NC-17", "NR"]);
+    table.text("description");
     table.string("image_url");
   });
 };
