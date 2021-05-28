@@ -25,6 +25,7 @@ async function setCritic(review) {
 
 async function update(review) {
   return knex("reviews")
+    .select("*")
     .where({ review_id: review.review_id })
     .update(review, "*")
     .then(() => read(review.review_id))

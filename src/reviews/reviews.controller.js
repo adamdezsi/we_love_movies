@@ -9,7 +9,7 @@ async function reviewExists(req, res, next) {
     return next();
   }
   return next({
-    status: 400,
+    status: 404,
     message: `Review cannot be found.`,
   });
 }
@@ -25,13 +25,8 @@ async function list(req, res, next) {
 }
 
 async function update(req, res, next) {
-  const updatedReview = {
-    ...res.locals.review,
-    ...req.body.data,
-    review_id: res.locals.review.review_id,
-  };
-  const result = await service.update(updatedReview);
-  res.json({ result });
+  const { reviewId } = req.params;
+  res.json({ data: await service.update(reviewId) });
 }
 
 module.exports = {
